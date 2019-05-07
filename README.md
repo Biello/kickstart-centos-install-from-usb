@@ -62,19 +62,19 @@ Be patient, this would take a while.
 
 * Copy DVD isolinux to BOOT
 ```
-	sudo cp -r ./DVD/isolinux ./BOOT/
+	sudo cp -r ./DVD/isolinux/* ./BOOT/
 ```
 
 * rename isolinux.cfg to syslinux.cfg
 ```
-	sudo mv BOOT/isolinux/isolinux.cfg BOOT/isolinux/syslinux.cfg
+	sudo mv BOOT/isolinux.cfg BOOT/syslinux.cfg
 ```
 
 * I also deleted a several files from BOOT I didn't think were required, e.g. isolinux.bin, TRANS.TBL, upgrade.img, grub.conf.
 
-* Copy kickstart file to the BOOT/isolinux directory and the CentOS 7 ISO to the DATA partition.
+* Copy kickstart file to the BOOT/ directory and the CentOS 7 ISO to the DATA partition.
 ```
-	sudo cp ./ks.cfg ./BOOT/isolinux/
+	sudo cp ./ks.cfg ./BOOT/
 	sudo cp /path/to/centos/dvd.iso ./DATA/
 ```
 
