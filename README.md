@@ -1,0 +1,1 @@
+# kickstart-centos-install-from-usb
