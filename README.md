@@ -1,4 +1,3 @@
-# kickstart-centos-install-from-usb
 # Bootable USB with CentOS 7 and Kickstart
 
 This page was vreated because I failed to find full manual of kickstart driven CentOS 7 USB installer. 
