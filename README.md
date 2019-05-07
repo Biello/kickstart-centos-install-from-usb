@@ -32,7 +32,13 @@ This can't be done as a disk image. As I described earlier kickstart failed to s
 * Format partitons
 ```
 	sudo mkfs -t vfat -n "BOOT" /dev/sdX1
-	sudo mkfs -L "DATA" /dev/sdX2'
+	sudo mkfs -L "DATA" /dev/sdX2
+```
+Be patient, this would take a while.
+
+* Umount sdX
+```
+	umount /dev/sdX1 /dev/sdX2
 ```
 
 * Write MBR data to device
@@ -68,25 +74,24 @@ This can't be done as a disk image. As I described earlier kickstart failed to s
 
 * Copy kickstart file to the BOOT/isolinux directory and the CentOS 7 ISO to the DATA partition.
 ```
-	sudo cp  ./ks.cfg ./BOOT/isolinux/
-	sudo cp  /path/to/centos/dvd.iso ./DATA/
+	sudo cp ./ks.cfg ./BOOT/isolinux/
+	sudo cp /path/to/centos/dvd.iso ./DATA/
 ```
 
 The final file structure looked something like this:
 ```
 BOOT/
-└── isolinux/
-	├── boot.cat
-	├── boot.msg
-	├── initrd.img
-	├── ks.cfg
-	├── ldlinux.sys
-	├── memtest
-	├── splash.png
-	├── syslinux.cfg
-	├── upgrade.img
-	├── vesamenu.c32
-	└── vmlinuz
+├── boot.cat
+├── boot.msg
+├── initrd.img
+├── ks.cfg
+├── ldlinux.sys
+├── memtest
+├── splash.png
+├── syslinux.cfg
+├── upgrade.img
+├── vesamenu.c32
+└── vmlinuz
 DATA/
 └── CentOS-7.0-1406-x86_64-Minimal.iso
 ```
@@ -103,7 +108,7 @@ label linux
 
 The append line should contain path to iso image and kickstart file.
 ```
-append initrd=initrd.img inst.stage2=hd:LABEL=DATA:/ quiet inst.ks=hd:LABEL=BOOT:/kickstart/ks.cfg
+append initrd=initrd.img inst.stage2=hd:LABEL=DATA:/ quiet inst.ks=hd:LABEL=BOOT:/ks.cfg
 ```
 
 When you boot from the USB and select Install CentOS 7, it now installs the system as described by your kickstart.
